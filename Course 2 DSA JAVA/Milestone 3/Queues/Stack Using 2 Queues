@@ -1,0 +1,78 @@
+import java.util.Queue;
+import java.util.LinkedList;
+public class Stack {
+
+    //Define the data members
+	private Queue<Integer> q1;
+	private Queue<Integer> q2; 
+ 	private int size;
+
+    public Stack() {
+        //Implement the Constructor
+        
+    q1= new LinkedList<Integer>();
+	q2= new LinkedList<Integer>();
+    }
+
+
+
+    /*----------------- Public Functions of Stack -----------------*/
+
+
+    public int getSize() { 
+        //Implement the getSize() function
+        return size;
+    }
+
+    public boolean isEmpty() {
+        //Implement the isEmpty() function
+        return size==0;
+    }
+
+    public void push(int element) {
+        //Implement the push(element) function
+        q1.add(element);
+       
+        size++;
+    }
+
+    public int pop() {
+        //Implement the pop() function
+         int n =size;
+        if (size==0){
+            return -1;
+        }
+        while( n!=1 ){
+            q2.add(q1.poll());
+            n--;
+        }
+        int ele= q1.poll();
+        Queue<Integer> q= new LinkedList<Integer>();
+        q= q2;
+        q2=q1;
+        q1=q;
+        size--;
+        return ele ;
+        
+        
+    }
+
+    public int top() {
+        //Implement the top() function
+         int n =size;
+        if (size==0){
+            return -1;
+        }
+        while( n!=1 ){
+            q2.add(q1.poll());
+            n--;
+        }
+        int ele= q1.poll();
+        q2.add(ele);
+         Queue<Integer> q= new LinkedList<Integer>();
+        q= q2;
+        q2=q1;
+        q1=q;
+        return ele;
+    }
+}
