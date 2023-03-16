@@ -1,0 +1,31 @@
+
+public class Solution {
+
+    public static void sort012(int[] arr){
+    	//Your code goes here
+        int nz=0;
+        int nt=arr.length -1;
+      int i =0;
+       
+        while( i<= nt && nt != -1){
+            if(arr[i]==1){
+                i++;
+            }
+            else if( arr[i]==0){
+                arr[i]=arr[nz];
+                arr[nz]=0;
+                nz++;
+                i++;
+            }
+            else{
+                arr[i]=arr[nt];
+                arr[nt]=2;
+                nt--;
+                
+            }
+            
+        }
+        
+    }
+
+}
