@@ -1,0 +1,31 @@
+import java.util.*;
+public class Solution {
+
+	public static int countWaysToMakeChange(int denominations[], int value) {
+		int n = denominations.length;
+
+		// return f(denominations, value, n);
+		int[][] dp = new int[n+1][value+1];
+
+		for (int[] row : dp)
+		Arrays.fill(row, -1);
+		return f(denominations,value,n,dp);
+
+	}
+
+	static int f(int a[], int value, int n , int dp[][]){
+         if (value == 0)
+            return 1;
+        if(value<0)
+            return 0;
+        
+        if (n<=0)
+            return 0;
+        
+         if (dp[n][value] != -1)
+            return dp[n][value];
+        
+       
+       return dp[n][value] = f(a,value-a[n-1], n, dp) + f(a,value,n-1,dp);  
+            
+    }
