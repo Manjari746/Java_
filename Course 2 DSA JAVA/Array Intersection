@@ -1,0 +1,59 @@
+public class Solution {
+    
+    public static int partition (int arr[], int s, int e){
+        
+        int pivot= arr[e];
+       int i=s;
+        int j=i-1;
+        while( i<e){
+        if(arr[i]<pivot){
+            j++;
+            int temp= arr[j];
+            arr[j]= arr[i];
+            arr[i]=temp;
+        }
+        
+        i++;}
+        
+        int t= arr[j+1];
+        arr[j+1]=pivot;
+        arr[e]=t;
+        return j+1;
+        
+    }
+    public static void quicksort(int arr[],int s, int e){
+        
+        if(s>=e){
+            return ;
+        }
+        
+        int p=partition(arr, s,e);
+        quicksort(arr, s, p-1);
+        quicksort(arr, p+1, e);
+    }
+
+	public static void intersection(int[] arr1, int[] arr2) {
+	   
+        
+        quicksort(arr1,0,arr1.length-1);
+
+        quicksort(arr2,0,arr2.length-1);
+        int i = 0;
+        int j = 0;
+        while(i<arr1.length && j<arr2.length){
+            if( arr1[i]==arr2[j]){
+                System.out.print(arr1[i]+" ");
+                i++; j++;
+            }
+            
+            else if( arr1[i]<arr2[j]){
+                i++;
+            }
+            else{
+                j++;
+            }
+        }
+        
+	}
+
+}
