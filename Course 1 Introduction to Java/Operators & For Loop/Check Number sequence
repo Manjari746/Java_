@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int prev=sc.nextInt();
+        
+        int count = 1, current;
+        boolean isDec = true;
+        
+        while(count <n) {
+          current = sc.nextInt();
+          count++;
+          if(current == prev) {
+            System.out.println("false");
+            return;
+          }
+
+          if(current < prev) {
+            if(isDec == false) {
+              System.out.println("false");
+              return;
+            }
+          }
+
+          else {
+              isDec = false;
+            
+          }
+          prev = current;
+        }
+        System.out.println("true");
+	}
+}
