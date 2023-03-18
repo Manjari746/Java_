@@ -1,0 +1,85 @@
+
+public class Solution 
+{
+	
+	public static void quickSort(int[] input) 
+    {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * No need to print or return the output.
+		 * Taking input and printing output is handled automatically.
+		 */
+		helper(input, 0, input.length - 1);
+	}
+	
+    public static void helper(int[] arr , int s , int e)
+    {
+        //base case
+        if(s >= e)
+            return;
+
+        //take the partition
+        int p = partition(arr , s , e);
+
+        //left part sort
+        helper(arr , s , p - 1);
+
+        //right part sort
+        helper(arr , p + 1 , e);
+
+    }
+
+    public static int partition(int[] arr , int s , int e)
+    {
+
+        int pivot = arr[s];
+        int count = 0;
+        
+        //count of elements smaller than pivot element
+        for(int i = s + 1; i <= e; i++)
+        {
+            if(arr[i] <= pivot)
+                count++;
+        }
+
+        int pivotIdx = s + count;
+
+        //put pivot element at correct position
+        int temp = pivot;
+        arr[s] = arr[pivotIdx];
+        arr[pivotIdx] = temp;
+
+        int sIdx = s;
+        int eIdx = e;
+
+        //make smaller elements lie before pivot & larger elements after pivot
+        while(sIdx < pivotIdx && eIdx > pivotIdx)
+        {
+
+            //move sIdx++ till we find element greater than pivot element in left side
+            while(arr[sIdx] <= pivot)
+            {
+                sIdx++;
+            }
+            //move eIdx-- till we find smaller elements than pivot in right side
+            while(arr[eIdx] > pivot)
+            {
+                eIdx--;
+            }
+            
+            //swap the values if found
+            if(sIdx < pivotIdx && eIdx > pivotIdx)
+            {
+                temp = arr[sIdx];
+                arr[sIdx] = arr[eIdx];
+                arr[eIdx] = temp;
+
+                sIdx++;
+                eIdx--;
+            }
+        }
+        return pivotIdx;
+    }
+    
+}
