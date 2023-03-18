@@ -1,0 +1,31 @@
+
+public class Solution {  
+
+    public static int[] merge(int arr1[], int arr2[]) {
+    	//Your code goes here
+        int m = arr1.length;
+        int n = arr2.length;
+        int a[]= new int [ m+n];
+        
+        int i =0,j=0, k=0;
+        while(i <m && j<n){
+        if(arr1[i]>arr2[j]){
+            a[k++]=arr2[j];
+            j++;
+        }
+        else{
+            a[k++]=arr1[i];
+            i++;
+        }
+    }
+        while(i<m){
+            a[k++]= arr1[i++];
+        }
+        while(j<n){
+            a[k++]= arr2[j++];
+        }
+        
+        return a;
+    }
+
+}
