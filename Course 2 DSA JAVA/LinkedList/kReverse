@@ -1,0 +1,81 @@
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class LinkedListNode<T> {
+        T data;
+        LinkedListNode<T> next;
+    
+        public LinkedListNode(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+
+public class Solution {
+    
+    public static class Doublenode<Integer>{
+    
+    LinkedListNode<Integer> head;
+     LinkedListNode<Integer> tail;
+    
+    Doublenode(){
+        this.head= null;
+        this.tail= null;
+    }
+    
+}
+    public static Doublenode<Integer> reverse( LinkedListNode<Integer> head){
+         LinkedListNode<Integer> curr = head;
+         LinkedListNode<Integer> prev= null;
+         LinkedListNode<Integer> frwd= null;
+    	 Doublenode<Integer> dd= new Doublenode<Integer>();
+        
+        while(curr!= null){
+        frwd= curr.next;
+        curr.next = prev ;
+        prev = curr;
+        curr= frwd;
+        }
+        dd.head=prev;
+        dd.tail=head;
+        return dd;
+        
+    }
+
+	public static LinkedListNode<Integer> kReverse(LinkedListNode<Integer> head, int k) {
+		//Your code goes here
+        if(head== null || head.next == null){
+            return head;
+        }
+        
+        int count =0;
+        LinkedListNode<Integer> temp = head; 
+        LinkedListNode<Integer> temp1 = temp;
+        while( temp != null && count< k-1){
+            temp = temp.next;
+            count++;
+        }
+        
+        // added new condition 
+        if( temp== null && count<k-1){
+          Doublenode<Integer> newhead = reverse(temp1);  
+            return newhead.head;
+        }
+         else{
+        LinkedListNode<Integer> nextlist= temp.next;
+        temp.next= null;
+        Doublenode<Integer> newhead = reverse(temp1);
+        
+        LinkedListNode<Integer> nextpartreverse=  kReverse(nextlist, k);
+        
+        
+        newhead.tail.next=nextpartreverse;
+        return newhead.head;
+        }
+	}
+    
+
+}
