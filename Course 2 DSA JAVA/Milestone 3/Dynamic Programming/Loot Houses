@@ -1,0 +1,28 @@
+public class Solution {
+
+	public static int maxMoneyLooted(int[] houses) {
+		//Your code goes here
+		
+		int n = houses.length;
+		if(n==0){
+			return 0;
+		}
+		int dp[]= new int[n];
+		dp[n-1]= houses[n-1];
+		dp[n-2]= houses[n-2];
+
+		for( int i =n-3; i>=0; i--){
+
+			int max= Integer.MIN_VALUE;
+			for( int j =i+2; j<n; j++){
+				int ans = houses[i]+dp[j];
+				if(max <ans ){
+					max= ans;
+				}
+			}
+			dp[i]= max;
+			}
+		return Math.max(dp[0],dp[1]);
+	}
+
+}
