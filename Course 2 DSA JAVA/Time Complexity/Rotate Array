@@ -1,0 +1,26 @@
+public class Solution {  
+
+    public static int[] reverse( int[]arr, int i, int j){
+        
+        //Reverse the array 
+        	while(i<j){
+                int temp= arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                
+                i++;
+                j--;
+            }
+        return arr;
+        
+    }
+    public static void rotate(int[] arr, int d) {
+    	//Your code goes here
+        int j = arr.length-1;
+       		reverse(arr, 0, j);
+        //System.out.println(j);
+        reverse(arr, 0, j-d);
+        reverse(arr, (j-d)+1, j);
+    }
+
+}
