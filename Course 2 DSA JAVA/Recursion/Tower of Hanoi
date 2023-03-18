@@ -1,0 +1,17 @@
+
+public class solution {
+
+	public static void towerOfHanoi(int disk, char source, char helper, char destination) {
+		// Write your code here
+		if( disk == 0){
+           
+return;
+        }
+        
+        towerOfHanoi(disk-1, source, destination, helper );
+   		System.out.println(source +" "+destination);
+
+        towerOfHanoi(disk-1, helper, source,destination );
+        
+	}
+}
