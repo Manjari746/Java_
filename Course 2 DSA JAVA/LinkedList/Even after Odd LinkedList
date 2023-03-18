@@ -1,0 +1,92 @@
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class LinkedListNode<T> {
+        T data;
+        LinkedListNode<T> next;
+    
+        public LinkedListNode(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+
+public class Solution {
+
+	public static LinkedListNode<Integer> evenAfterOdd(LinkedListNode<Integer> head) {
+		//Your code goes here
+        
+        //if LL is empty or LL has single have then return 
+        if(head== null || head.next ==null){ 
+            return head;
+        }
+            
+        
+        LinkedListNode< Integer> oddhead = null; // head for odd nodes
+        LinkedListNode<Integer> evenhead =null;	 // head for even nodes
+       
+        
+        if(head.data %2!=0){ // if head node value is odd
+       		oddhead= head;	// oddhead has head value
+            head= head.next;
+            oddhead.next= null;
+        
+        }
+        else{ 
+       evenhead=  head; // if head node value is even 
+            head= head.next;
+            evenhead.next= null;
+        }
+        
+        LinkedListNode<Integer> temp = head;
+         LinkedListNode< Integer> oddtemp= oddhead; 
+         LinkedListNode< Integer> eventemp= evenhead;
+       
+        while(temp!= null){
+        
+            if(temp.data %2 !=0){
+                
+                if(oddtemp==null){ // if oddhead /oddtemp is null or say has no value
+                    oddtemp=temp;
+                    oddhead=oddtemp;
+                  temp=temp.next;
+                     oddtemp.next=null;
+                }
+                
+                else{	//when oddtemp has one or more than one nodes
+                oddtemp.next= temp;
+                temp=temp.next;
+                oddtemp=oddtemp.next;
+                oddtemp.next=null;
+                }
+                
+               
+            }
+            else{
+                if(eventemp ==null){ // if evenhead/ eventemp is null or say has no values
+                    eventemp= temp;
+                    evenhead=eventemp;
+                temp=temp.next;
+                     eventemp.next=null;}
+                
+                else{  //when eventemp has one or more than one nodes
+                    eventemp.next= temp;
+                 temp=temp.next;
+                eventemp=eventemp.next;
+                eventemp.next=null;
+                }
+            }
+        }
+        
+        if(oddhead== null){ 
+            return evenhead;
+        }
+        else{  // frst odd nodes then even nodes
+        oddtemp.next = evenhead;
+        return oddhead;
+        }
+	}
+}
