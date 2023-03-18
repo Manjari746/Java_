@@ -1,0 +1,98 @@
+import java.util.Scanner;
+import java.util.*;
+class Edge implements Comparable<Edge>{
+	int v1;
+	int v2;
+	int weight;
+
+	public Edge (int v1, int v2, int weight){
+		this.v1= v1;
+		this.v2= v2;
+		this.weight = weight;
+	}
+
+	
+	public int compareTo( Edge o){
+		return this.weight - o.weight;
+	}
+
+}
+public class Solution {
+
+
+public static Edge[] KrsukalAlgo( Edge []edges , int V){
+
+	Arrays.sort(edges);
+	Edge mst[]= new Edge[V-1]; //output array
+
+	int parent[]= new int[V]; 
+	for( int i =0; i<V; i++){
+		parent[i]= i;
+	}
+
+	int count =0; 
+	int j =0;
+	while( count!=V-1 ){
+		Edge current_edge= edges[j];
+		int Parentv1= findParent(current_edge.v1, parent);
+		int Parentv2= findParent(current_edge.v2, parent);
+
+		if(Parentv1!= Parentv2){
+			mst[count]= current_edge;
+			count++;
+			parent[Parentv1] = Parentv2;
+		}
+
+		j++;
+	}
+	return mst;
+
+	
+}
+
+private static int findParent(int v, int parent[]){
+	if(v == parent[v]){
+		return v;
+	}
+
+	return findParent(parent[v], parent);
+}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int V = s.nextInt();
+		int E = s.nextInt();
+
+		/* Write Your Code Here
+		 * Complete the Rest of the Program
+		 * You have to take input and print the output yourself
+		 */
+		Edge edges[]= new Edge[E];
+		
+		for( int i =0; i<edges.length; i++){
+			
+			int v1= s.nextInt();
+			int v2= s.nextInt();
+			int weight= s.nextInt();
+	
+			Edge edge1= new Edge(v1, v2, weight);
+			edges[i]= edge1;
+		}
+
+	
+		Edge mst[]= new Edge [V-1];
+		mst= KrsukalAlgo(edges, V);
+
+		for( int i =0; i<V-1; i++){
+			
+			if(mst[i].v1 <=mst[i].v2){
+			System.out.print(mst[i].v1+" "+mst[i].v2+" "+mst[i].weight);
+		}
+		else{
+			System.out.print(mst[i].v2+" "+mst[i].v1+" "+mst[i].weight);
+		}
+		System.out.println();
+	}
+	
+}
+}
+
