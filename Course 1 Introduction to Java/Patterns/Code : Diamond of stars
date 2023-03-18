@@ -1,0 +1,86 @@
+import java.util.Scanner;
+public class Solution {
+    
+    public static void main(String[] args) {
+        // Write your code here
+        Scanner s= new Scanner(System.in);
+        int n= s.nextInt();
+      
+        if (n%2!=0)
+        {
+            int i =1;
+        	while(i<=n/2 +1)
+            {
+                int space= 1;
+                while(space<=n/2 +1 -i )
+                {
+                   System.out.print(" ");
+                    space++;
+                }
+                int star= 1;
+                while(star<=2*i-1)
+                {
+                   System.out.print("*");
+                    star++;
+                }
+                i++;
+                
+               System.out.println();
+            }
+            
+            int k=1;
+            int j= n-(n/2+1);
+            
+            while(k<= n-(n/2+1))
+            {
+                 int space= 1;
+                while(space<=k )
+                {
+                    System.out.print(" ");
+                    space++;
+                }
+                int star= 1;
+                while(star<=2*j-1)
+                {
+                    System.out.print("*");
+                    star++;
+                }
+                k++;
+            j--;
+                System.out.println();
+            }
+           
+
+        //    WAY-2
+        //    for(int i=0; i<n/2+1; i++){
+        //        int space=1;
+        //        while(space<=(n/2-i)){
+        //          System.out.print(" ");
+        //             space++;
+        //        }
+        //        int star=1;
+        //        while(star<=2*i+1){
+        //            System.out.print("*");
+        //             star++;
+        //        }
+        //         System.out.println();
+        //    }
+
+        //        for(int j=n/2+1; j<n; j++){
+        //            int space=1;
+        //            while(space<=Math.abs(n/2-j)){
+        //                  System.out.print(" ");
+        //                space++;
+        //            }
+        //              int star=1;
+        //        while(star<=2*(n-j-1)+1){
+        //            System.out.print("*");
+        //             star++;
+        //        }
+
+        //              System.out.println();
+        //        }
+           }
+        }
+        
+    }
