@@ -1,0 +1,31 @@
+
+public class Solution {
+	public static boolean checkSequence(String a, String b) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+		 * Taking input and printing output is handled automatically.
+		 */
+        boolean c=true;
+        int temp =-1, j=0, i =0;
+        for( ; j<b.length(); j++){
+			char ch= b.charAt(j);
+            for( i=temp+1; i<a.length(); i++ ){
+                if( b.charAt(j)==a.charAt(i)){
+                   // System.out.println(ch+" "+"j= "+j+" temp= "+temp+" i= "+i);
+                    temp=i;
+                    c=true;
+                    break;
+                }
+               
+            }
+            if(i==a.length() && a.charAt(i-1)!=b.charAt(j)){
+                return false;
+            }
+        }
+
+
+        return c;
+	}
+}
