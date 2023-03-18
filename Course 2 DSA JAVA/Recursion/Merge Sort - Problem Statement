@@ -1,0 +1,42 @@
+public class solution {
+
+	public static void mergeSort(int[] input){
+		// Write your code here
+		if(input.length<=1){
+            return;
+        }
+        int mid= input.length/2;
+        int b[]= new int [mid];
+        int c[]= new int [input.length-mid];
+        
+        for(int i=0; i<mid;i++){
+            b[i]=input[i];
+        }
+        int k=0;
+        for(int j=mid; j<input.length;j++){
+            c[k++]= input[j]; 
+        }
+        
+    	mergeSort(b);
+        mergeSort(c);
+        
+        int p=0,l=0,id=0;
+        while(p<mid && l<k){
+            if(b[p]<=c[l]){
+                input[id++]=b[p++];
+            }
+            else{
+                input[id++]=c[l++];
+            }
+        }
+        
+        while(p<mid){
+            input[id++]=b[p++];
+        }
+        
+        while(l<k){
+            input[id++]=c[l++];
+        }
+        
+	}
+}
