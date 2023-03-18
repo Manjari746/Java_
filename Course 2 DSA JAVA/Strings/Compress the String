@@ -1,0 +1,32 @@
+public class Solution {
+    public static String getCompressedString(String str) {
+        // Write your code here.
+        String com_str="";
+        int i=0, j=i+1,count =0;
+        for(; j<str.length(); j++){
+            if( str.charAt(i)==str.charAt(j)){
+                count++;
+
+            }
+            else{
+                if(count == 0)
+                    com_str+= str.charAt(i);
+                
+                else{
+                    com_str+= str.charAt(i)+""+(count+1);
+                    count= 0;
+                } 
+            }
+
+            i=j;
+        }
+        if(count == 0)
+            com_str+= str.charAt(i);
+
+        else
+            com_str+= str.charAt(i)+""+(count+1);
+
+        return com_str;
+    }
+
+}
