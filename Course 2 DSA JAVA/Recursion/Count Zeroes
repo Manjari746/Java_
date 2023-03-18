@@ -1,0 +1,24 @@
+
+public class solution {
+public static int step=0;
+	public static int countZerosRec(int input){
+		// Write your code here
+        int count =0;
+        if( input<=0){
+            if( step==0)
+                return count+1;
+            else
+                return count;
+        }
+
+        int n = input%10;
+        step++;
+        input/=10;
+        if(n==0){
+            count++;
+        }
+        return count+countZerosRec(input);
+	
+    }
+    
+}
