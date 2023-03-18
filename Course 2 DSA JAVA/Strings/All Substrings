@@ -1,0 +1,30 @@
+
+public class Solution {
+
+	public static void printSubstrings(String str) {
+		//Your code goes here
+        
+        int n = str.length();
+       /////// Way 2 : length wise 
+        int l =1;
+        
+        while(l<=n){
+           
+                for( int i =0; i<=n-l; i++){
+                    System.out.println(str.substring(i, i+l));
+                }
+            
+            l++;
+        
+        }
+        //// Way 1
+        // for (int i =0; i<= n-1; i++)
+        // {
+        //     for( int j =i; j<=n-1; j++)
+        //     {
+        //         System.out.println(str.substring(i,j+1));
+        //     }
+        // }
+	}
+
+}
