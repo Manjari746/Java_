@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+
+        int basic_sal, allow;
+        String str;
+        Scanner s= new Scanner(System.in);
+        basic_sal=s.nextInt();
+        str=s.next();
+        char ch=str.charAt(0);
+        
+        double hra=(0.2*basic_sal);
+        double da=(0.5*basic_sal);
+        double pf =0.11*basic_sal;
+        if(ch=='A'){
+            allow=1700;
+        }
+        else if(ch=='B'){
+            allow=1500;
+        }
+        else{
+            allow=1300;
+        }
+        
+                  double  tot_sal= basic_sal+hra+da+allow-pf; 
+                    System.out.print(Math.round(tot_sal));
+	}
+}
