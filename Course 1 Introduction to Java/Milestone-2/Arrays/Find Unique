@@ -1,0 +1,31 @@
+public class Solution{  
+
+    public static int findUnique(int[] nums){
+		//Your code goes here
+
+        ///////////////////BETTER APPROACH /////////////////////
+        int n=nums.length;
+        int unike=0;
+        for(int i=0;i<n;i++){
+        unike^=nums[i];
+        }
+        return unike;
+
+        //////////////////////APPROACH -2/////////////////////////
+        // int n= arr.length;
+        // if (n==1)        {
+        //     return arr[0];
+        // }
+        // for (int i= 0; i<n; i++){
+        //     for ( int j= 0; j<n;j++){ // j starts from 0 because duplicates can be behind too.
+
+        //         if( i!=j && arr[i]==arr[j]){ 
+        //              break;    
+        //         }
+        //         if(j==n-1 )
+        //             return arr[i];
+        //     }
+        // }
+        //       return 0;
+    }
+}
