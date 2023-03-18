@@ -1,0 +1,46 @@
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static void printReverse(LinkedListNode<Integer> root) {
+		//Your code goes here
+
+        if(root == null){
+            return;
+        }
+        
+        int size=0;
+        LinkedListNode<Integer> temp=root;
+        while(temp!=null){
+            size++;
+            temp=temp.next;
+        }
+        
+        printRLL(root, size);
+	}
+    
+    public static void printRLL(LinkedListNode<Integer> root, int size){
+        
+        if(size==1){
+            System.out.print(root.data+" ");
+            return;
+        }
+        
+         printRLL(root.next, size-1);
+        System.out.print(root.data+" ");
+    }
+
+}
