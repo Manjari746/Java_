@@ -1,0 +1,28 @@
+
+public class Solution {
+
+	public static char highestOccuringChar(String str) {
+		//Your code goes here
+        int freq[]= new int [26];
+        int charno=-1;
+        for ( int i=0; i< str.length(); i++ ){
+            int p=str.charAt(i)-'a';
+            freq[p]++;
+          
+        }
+        
+        int max= Integer.MIN_VALUE;
+        for(int j=0; j<26;j++){
+            if(max<freq[j]){
+                 
+                max=freq[j];
+                charno=j;
+                  
+            }
+        }
+        char a= (char)(charno+'a');
+    
+        return a;
+	}
+
+}
