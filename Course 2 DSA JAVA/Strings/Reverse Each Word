@@ -1,0 +1,25 @@
+
+public class Solution {
+
+	public static String reverseEachWord(String str) {
+		//Your code goes here
+        
+      String rev = "";
+        int i = 0;
+        while(i<str.length())
+        {
+            String temp= "";
+            while(i<str.length() && str.charAt(i)!=' ')
+            {
+                temp = str.charAt(i) +  temp;
+                i++;
+            }
+            
+            rev += temp + " ";
+            i++;
+        }
+        
+        return rev;
+	}
+
+}
