@@ -1,0 +1,45 @@
+import java.util.*;
+public class Solution {	 
+
+    public static int pairSum(int[] arr, int num) {
+
+        //Your code goes here
+
+        Arrays.sort(arr); 
+
+        int count=0, counti=0, countj=0;     
+        int i =0, j=arr.length-1;
+        while(i<j){
+            if(arr[i]+arr[j]==num){
+                counti=1;
+                while((i<arr.length-1)&&(arr[i]==arr[i+1])){
+                    counti++;
+                    i++;
+                }
+                countj=1;
+                if(i!=arr.length-1){ //i/p = 1 2 2 3 4 5 5 6  num=6
+                    while(arr[j]==arr[j-1]){
+                        countj++;
+                        j--;
+                    }
+                    count =count+ counti*countj;
+
+                    i++; j--; }
+
+                else{ // i/p = 2 2 2 2 2 2 num=4
+                    count=2*counti; return count;}
+
+            }
+            else if(arr[i]+arr[j]>num){
+                j--;
+            }
+            else{
+                i++;
+            }
+        }
+
+        return count;
+
+    }
+
+}   
