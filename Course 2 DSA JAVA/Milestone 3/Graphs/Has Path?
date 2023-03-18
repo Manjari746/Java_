@@ -1,0 +1,57 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.*;
+public class Solution {
+
+	public static boolean isPath(int adjMatrix[][], int curr_vertex, boolean visited[], int b){
+		if(curr_vertex<0 || b<0){
+			return false;
+		}
+		
+		visited[curr_vertex]=true;
+		boolean ans = false;
+		for( int i =0; i< adjMatrix.length; i++){
+			if( ans == true){
+				break;
+			}
+				if(i== b && adjMatrix[curr_vertex][i]==1 && visited[i]== false){
+					ans= true;
+					visited[i]= true;
+				}
+				else if(adjMatrix[curr_vertex][i]==1 && visited[i]== false){
+					ans = isPath(adjMatrix, i, visited, b);
+
+				}
+				
+		}
+
+		return ans;
+	}
+	public static void main(String[] args) throws NumberFormatException, IOException {
+        /* Write Your Code Here
+		 * Complete the Rest of the Program
+		 * You have to take input and print the output yourself
+		 */
+			Scanner s =new Scanner(System.in);
+			int v= s.nextInt();
+			int e= s.nextInt();
+			int adjMatrix[][]= new int[v][v];
+			
+			for( int i =0; i<e; i++){
+				int v1= s.nextInt();
+				int v2=s.nextInt();
+				adjMatrix[v1][v2]=1;
+				adjMatrix[v2][v1]=1;
+			
+			}
+
+			int a= s.nextInt();
+			int b= s.nextInt();
+			boolean visited[]= new boolean[v];
+			System.out.print(isPath(adjMatrix, a,visited, b));
+	}
+
+}
