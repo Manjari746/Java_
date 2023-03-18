@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+		Scanner s=new Scanner (System.in);
+        int num=s.nextInt();
+        int no=num,count=0;
+        while(no>0){
+     
+            count++;
+            no=no/10;
+        }
+        
+        int n=num, sum=0;
+        while(n>0){
+            int a= n%10;
+            int x= (int)Math.pow(a,count);
+            sum+=x;
+            n=n/10;
+        }
+        
+        if(sum==num)
+            System.out.print("true");
+        else{
+             System.out.print("false");
+        }
+	}
+}
