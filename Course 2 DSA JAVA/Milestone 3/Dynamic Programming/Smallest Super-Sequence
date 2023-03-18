@@ -1,0 +1,50 @@
+public class Solution {
+
+	public static int smallestSuperSequence(String str1, String str2) {
+
+        return sssI(str1, str2);
+}
+
+public static int sssI(String str1, String str2 ){
+
+	if(  str1.length()==0){
+		return str2.length();
+	}
+
+	if(str2.length()==0){
+		return str1.length();
+	}
+	int n = str1.length();
+	int m = str2.length();
+    int dp[][]= new int [n+1][m+1];
+
+	int c=0;
+	for( int row= n; row>=0; row--){
+		dp[row][m]= c;
+		c++;
+	}
+	c=0;
+	for( int col= m; col>=0; col--){
+		dp[n][col]= c;
+		c++;
+	}
+	for( int i = n-1; i>=0; i-- ){
+		for( int j= m-1; j>=0; j-- ){
+
+			int ans ;
+			if( str1.charAt(i)== str2.charAt(j)){
+			ans =1+dp[i+1][j+1];
+		}
+	else{
+		int ans1= 1+ dp[i+1][j];
+		int ans2= 1+ dp[i][j+1];
+		ans = Math.min(ans1, ans2);
+		}
+
+		dp[i][j]= ans;
+		}
+	}
+	
+
+	return dp[0][0];
+}
