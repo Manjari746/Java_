@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class Solution {
+
+	public static int findMinvertex(int distance[], boolean visited[]){
+
+		int minVertex=-1;
+		for( int i =0; i<visited.length; i++){
+			if(visited[i]== false && (minVertex ==-1 || distance[i]<distance[minVertex])){
+				minVertex=i;
+			}
+		}
+
+		return minVertex;
+	}
+	public static void Dijkstra(int adjMatrix[][]){
+
+		int n = adjMatrix.length;
+		boolean visited[]= new boolean[n];
+		int distance[]= new int [n];
+		distance[0]= 0;
+		for( int i =1; i<n ; i++){
+			distance[i]= Integer.MAX_VALUE;
+		}
+
+		for( int i =0; i< n ; i++){
+
+			int minVertex= findMinvertex(distance, visited);
+			visited[minVertex]= true;
+
+			for( int j =0 ; j<n; j++){
+
+				if( adjMatrix[minVertex][j]>0 && adjMatrix[minVertex][j] <Integer.MAX_VALUE
+				 && !visited[j] ){
+
+					 int newDist= adjMatrix[minVertex][j]+distance[minVertex];
+					 if(newDist<distance[j]){
+						 distance[j]= newDist;
+					 }
+				 }
+			}
+		}
+
+		for( int k =0; k<n;k++){
+			System.out.println(k+" "+distance[k]);
+		}
+
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int V = s.nextInt();
+		int E = s.nextInt();
+
+		 int adjMatrix[][]= new int[V][V];
+		 for( int i =0; i<E; i++){
+			 int v1= s.nextInt();
+			 int v2= s.nextInt();
+			 int weight= s.nextInt();
+
+			 adjMatrix[v1][v2]= weight;
+			 adjMatrix[v2][v1]= weight;
+
+		 }
+
+		 Dijkstra(adjMatrix);
+		 
+	}
+}
