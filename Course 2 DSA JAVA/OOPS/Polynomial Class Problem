@@ -1,0 +1,136 @@
+
+public class Polynomial {
+
+    private int arr[];
+	
+	Polynomial(){
+		arr= new int [5];
+		
+	}
+    
+	/* This function sets coefficient for a particular degree value, if degree is not there in the polynomial
+	 *  then corresponding term with specified degree and value is added int the polynomial. If the degree
+	 *  is already present in the polynomial then previous coefficient is replaced by
+	 *  new coefficient value passed as function argument
+	*/
+   
+	public void setCoefficient(int degree, int element){
+	if(degree<arr.length) {
+			arr[degree]=element;
+		}
+		else {
+			inc_capacity(degree);
+			arr[degree]=element;
+			
+		}
+	}
+    
+    private void inc_capacity(int d) {
+		
+		int temp[];
+		temp=arr;
+		arr= new int [d+1];
+		for( int i =0; i<temp.length; i++) {
+			arr[i]=temp[i];
+		}
+		return ;
+	}
+	
+	
+	// Prints all the terms(only terms with non zero coefficients are to be printed) in increasing order of degree. 
+	public void print(){
+		for( int i=0; i< arr.length; i++){
+			if(arr[i]!=0) {
+				System.out.print(arr[i]+"x"+i+" ");
+			}
+		}
+		System.out.println();
+	}
+
+    
+	
+	// Adds two polynomials and returns a new polynomial which has result
+	public Polynomial add(Polynomial p){
+		
+       int length= Math.min(this.arr.length, p.arr.length);
+		int n = Math.max(this.arr.length, p.arr.length);
+		Polynomial p1= new Polynomial();
+		Polynomial d1= new Polynomial();
+		p1.setCoefficient(n,0 );
+		int i =0;
+		while(i<length) {
+			p1.setCoefficient(i, (this.arr[i]+p.arr[i]));
+			// p1.print();
+			i++;
+			
+		}
+		if(this.arr.length>p.arr.length) {
+			d1=this;
+		}
+		else {
+			d1=p;
+		}
+		
+		for(int j=i;j<n;j++) {
+			p1.setCoefficient(j,d1.arr[j]);
+		}
+	  
+		return p1;
+		
+	}
+	
+	// Subtracts two polynomials and returns a new polynomial which has result
+	public Polynomial subtract(Polynomial p){
+			int length= Math.min(this.arr.length, p.arr.length);
+		int n = Math.max(this.arr.length, p.arr.length);
+		Polynomial p1= new Polynomial();
+		Polynomial d1= new Polynomial();
+		p1.setCoefficient(n,0 );
+		int i =0;
+		while(i<length) {
+			p1.setCoefficient(i, (this.arr[i]-p.arr[i]));
+			// p1.print();
+			i++;
+			
+		}
+		if(this.arr.length>p.arr.length) {
+			d1=this;
+		}
+		else {
+			d1=p;
+		}
+		
+		for(int j=i;j<n;j++) {
+			if(d1==p)
+				p1.setCoefficient(j,0-d1.arr[j]);
+			else
+				p1.setCoefficient(j,d1.arr[j]);
+		}
+	  
+		return p1;
+	}
+	
+	// Multiply two polynomials and returns a new polynomial which has result
+	public Polynomial multiply(Polynomial p){
+		
+       Polynomial p2 = new Polynomial();
+     for( int i =0; i<this.arr.length; i++){
+    	  Polynomial p1 = new Polynomial();
+    	 if(this.arr[i]!=0) {
+         for( int  j =0 ; j< p.arr.length; j++){
+             
+             int d= i+j;
+           
+             p1.setCoefficient(d, this.arr[i]*p.arr[j]);
+             
+         }
+         
+        p2= p2.add(p1);
+           
+     }
+    	 
+    }
+     return p2;
+	}
+
+}
