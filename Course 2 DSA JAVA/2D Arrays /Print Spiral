@@ -1,0 +1,35 @@
+
+public class Solution {
+
+	public static void spiralPrint(int mat[][]){
+		//Your code goes here
+        int rowno=mat.length;
+            if(rowno==0){
+                return;
+            }
+        int colno=mat[0].length;
+        
+        int rs=0,cs=0, ce=colno-1,re=rowno-1;
+        int count=0;
+        while(count<=(rowno*colno))
+        {
+            for( int i =cs;i<=ce;i++){
+                System.out.print(mat[rs][i]+" ");count++;
+            }
+            rs++;
+            if(rs>re){ break;}
+        for( int j= rs; j<=re; j++){
+            System.out.print(mat[j][ce]+" ");count++;
+        }
+            ce--;
+            for( int k=ce; k>=cs;k--){
+               System.out.print(mat[re][k]+" "); count++;
+            }
+            re--;
+            for(int p = re; p>=rs;p--){
+                 System.out.print(mat[p][cs]+" "); count++;
+            }
+            cs++;
+        }
+	}
+}
