@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+	
+        Scanner s= new Scanner(System.in);
+        int n= s.nextInt();
+        
+        int i=0;
+        while(i<n){
+            
+            int space=1;
+            while(space<=i){
+                System.out.print(" ");
+                space++;
+            }
+            
+            int star=1;
+            while(star <=n){
+              System.out.print("*");
+                star++;  
+            }
+            i++;
+            System.out.println();
+        }
+	}
+}
