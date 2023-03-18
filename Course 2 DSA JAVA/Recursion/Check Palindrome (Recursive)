@@ -1,0 +1,24 @@
+public class solution {
+
+    public static boolean helper(String str, int si, int e){
+       if(si>=e){
+           return true;
+       }
+        
+        if( str.charAt(si)==str.charAt(e)){
+            
+            return helper(str, si+1, e-1);
+        }
+        else{
+            return false;
+        }
+    }
+	public static boolean isStringPalindrome(String input) {
+		// Write your code here
+
+           return helper(input, 0, input.length()-1);
+            
+        
+        
+	}
+}
