@@ -1,0 +1,66 @@
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+    public static int count(LinkedListNode<Integer> head ){
+      
+        int count= 0;
+        while( head !=null){
+            count++;
+            head= head.next;
+        }
+        return count;
+    }
+	public static LinkedListNode<Integer> bubbleSort(LinkedListNode<Integer> head) {
+		//Your code goes here
+        if( head == null || head.next == null){
+            return head;
+        }
+        int n = count(head);
+        // System.out.println(n);
+
+        for ( int i=0 ; i< n-1 ; i++){
+        LinkedListNode<Integer> temp = head.next;
+        LinkedListNode<Integer> curr = head;
+        LinkedListNode<Integer> prev = null;
+        
+        while( temp != null){
+            if(curr.data > temp.data ){
+                
+                curr.next= temp.next;
+                temp.next= curr;
+                if( prev != null){
+                    prev.next = temp;
+                }
+                if( curr == head){
+                    head = temp;
+                }
+                prev = temp ;
+                temp =curr;
+            temp= temp.next;
+            }
+            
+            else{
+            prev= curr;
+            curr= temp;
+            temp= temp.next;
+            }
+        }
+        
+        }
+        return head;
+	}
+}
