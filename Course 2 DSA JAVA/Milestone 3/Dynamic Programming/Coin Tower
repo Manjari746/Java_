@@ -1,0 +1,32 @@
+public class Solution {
+
+	public static String findWinner(int n, int x, int y) {
+		//Your code goes here
+		int dp [ ]= new int [ n+1];
+		dp[0]=0;
+		dp[1]= 1;
+		dp[x]=1;
+		dp[y]=1;
+
+		for(int i =1; i<=n; i++){
+			int ans1= dp[i-1]^1;
+			int ans2 = Integer.MIN_VALUE;
+			int ans3 = Integer.MIN_VALUE;
+			if(i>=x){
+			ans2= dp[i-x]^1;}
+			if(i>=y){
+			 ans3 = dp[i-y]^1;
+			}
+
+			dp[i]= Math.max(ans1, Math.max(ans2,ans3));
+		}
+
+		if( dp[n]== 1){
+			return "Beerus";
+		}
+		else{
+			return "Whis";
+		}
+	}
+
+}
