@@ -1,0 +1,23 @@
+import java.util.*;
+public class Solution {
+
+	public static int findDuplicate(int[] arr) {
+		//Your code goes here
+        
+        if (arr.length<1){
+            return -1;
+        }
+        // quicksort(arr, 0, arr.length-1);
+        Arrays.sort(arr);
+        
+        for(int i =0; i<arr.length-1; i++){
+            int xor=arr[i]^ arr[i+1];
+            if(xor==0){
+                return arr[i];
+            }
+        }
+        
+        return -1;
+        
+	}
+}
