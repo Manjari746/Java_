@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class Solution {
+
+	public static void main(String[] args) {
+
+		/*  Read input as specified in the question.
+    		 * Print output as specified in the question.
+    		 */
+		Scanner s= new Scanner ( System.in);
+        int n = s.nextInt();
+        
+        for( int i =0; i<n; i++){
+            
+            int f= i;
+            while( f>0)
+            {
+                System.out.print("0");
+                f--;
+            }
+            System.out.print("*");
+            int m= 1;
+            while( m<=n-1-i)
+            {
+                System.out.print("0");
+                m++;
+            }
+            System.out.print("*");
+           int p =1;
+            while( p<= n-1-i)
+            {
+                System.out.print("0");
+                p++;
+            }
+        System.out.print("*");
+              int g =i;
+            while( g>0)
+            {
+                System.out.print("0");
+                g--;
+            }
+          System.out.println();
+            
+	}
+        
+
+    }}
+
