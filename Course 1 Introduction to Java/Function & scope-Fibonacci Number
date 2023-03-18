@@ -1,0 +1,19 @@
+public class Solution {
+	
+	public static boolean checkMember(int n){
+				
+int x=0;
+int y=1;
+int nextTerm=1;
+while(x<=n){
+	if(x==n)
+	return true;
+nextTerm=x+y;
+x=y;
+y=nextTerm;
+}
+
+return false;
+
+	}
+}
