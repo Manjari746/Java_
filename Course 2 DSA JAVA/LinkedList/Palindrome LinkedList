@@ -1,0 +1,70 @@
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+public class Solution {
+
+    //reverse the linkedList
+    public static LinkedListNode<Integer>rrLL(LinkedListNode<Integer>head){ //ll = 2 9 3
+        LinkedListNode<Integer>curr = head;//2
+        LinkedListNode<Integer>pre = null;
+        LinkedListNode<Integer>fwd = null;
+        while(curr != null){
+            fwd = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = fwd;
+        }
+        return pre;//3 9 2
+    }
+    public static boolean isPalindrome(LinkedListNode<Integer> head) {
+        // checking whether head is null or head has only one element => return true 
+        if(head == null || head.next == null){
+            return true;
+        }
+
+        //find middle of linked list using first and fast pointer concept 
+        LinkedListNode<Integer>fast = head;
+        LinkedListNode<Integer>slow = head;
+        while(fast.next != null && fast.next.next != null){
+            fast = fast.next.next;//9
+            slow = slow.next;//1
+        }
+        // now slow.next will point to the middle element 
+        // make secondhead node that will point to the second half of the LL 
+        LinkedListNode<Integer>secondHead = slow.next;//2
+        // make slow.next = null .. means we are breaking the list from middle ..
+        // First half of LL = head ->some elements -> slow->null
+        // second half of LL = slow.next(second head)
+        slow.next = null;
+      
+      // reverse the the second part of LL 
+        secondHead = rrLL(secondHead);  //reversing the list 
+        
+
+        // compare the each element of first part of LL and reverse of second part of LL 
+        // if element are diff return false 
+        LinkedListNode<Integer>SecondsubList = secondHead;//3
+        LinkedListNode<Integer>firstSublist = head;//3
+        while(SecondsubList != null){
+            if(SecondsubList.data != firstSublist.data ){
+                return false;
+            }
+            SecondsubList = SecondsubList.next;
+            secondSublist = firstSublist.next;
+            }
+        return true;
+
+
+    }
+}
