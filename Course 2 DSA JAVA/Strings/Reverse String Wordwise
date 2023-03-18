@@ -1,0 +1,29 @@
+public class Solution {
+    public static String reverseWordWise(String input) {
+        // Write your code here
+        int n = input.length();
+        int i =0;
+        int currword=i;
+        String revstr = " ";
+        for( ; i<n ; i++){
+
+            if( input.charAt(i)==' '){
+                String word=" ";
+                for( int p =currword; p<=i-1; p++){
+                    word+= input.charAt(p);
+                }
+
+                revstr = word +revstr ;
+                currword = i+1;
+            } 
+        }
+        String word="";
+        for( int p =currword; p<=n-1; p++){
+            word+= input.charAt(p);
+        }
+
+        revstr = word +revstr ;        
+        return revstr;
+    }
+
+}
