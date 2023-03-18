@@ -1,0 +1,45 @@
+
+public class Solution {
+	
+	public static String minLengthWord(String input){
+       // String input= "this is test string alll";
+	int n = input.length();
+	int count =0;
+	String minstr="";
+    int min=Integer.MAX_VALUE;
+    int start=0;
+    
+    for ( int j= start; j<input.length();){
+        
+    	if( input.charAt(j)==' ') {
+    		int end = j-1;
+    		if( min>count) {
+    			min=count;
+    			minstr="";
+    			 for( int i =start;  i<=j-1; i++){
+    				  minstr+=input.charAt(i);
+    			  }
+    		}
+    		start = j+1;
+    		count=0;
+    	}
+    	else {
+    	count++;
+    	}
+    	
+    	j++;
+    	}
+    count= (n)-start;
+    if(count<min) {
+    	min= count;
+        minstr="";
+    	for(int p= start ; p<=n-1; p++) {
+        	minstr+=input.charAt(p);
+        }
+    }
+    
+    //System.out.println(minstr); 
+        return minstr;
+    }
+}
+		
