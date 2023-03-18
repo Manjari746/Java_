@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class Solution {
+    
+    public static void main(String[] args) {
+        // Write your code here
+        int no ,p;
+        Scanner s= new Scanner(System.in);
+        no= s.nextInt();
+        p= s.nextInt();
+        
+        System.out.println((int)(Math.pow(no,p)));
+    }
+}
