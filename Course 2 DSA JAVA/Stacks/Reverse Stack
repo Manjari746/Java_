@@ -1,0 +1,30 @@
+import java.util.Stack;
+public class Solution {
+
+	public static void reverseStack(Stack<Integer> input, Stack<Integer> extra) {
+		//Your code goes here
+        // base case
+        if(input.size() == 0 || input.size() == 1){
+            return ;
+        }
+        
+        int first_ele= input.pop();
+         int ele= 0;
+        
+        reverseStack( input, extra);
+        
+      while( !input.isEmpty()){
+        ele= input.pop();
+        extra.push(ele);
+    }
+    
+    
+    input.push(first_ele);
+    
+    while(extra.size()!=0){
+        ele= extra.pop();
+        input.push(ele);
+    }
+	}
+
+}
