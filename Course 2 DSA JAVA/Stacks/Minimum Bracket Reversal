@@ -1,0 +1,46 @@
+import java.util.Stack;
+public class Solution {
+
+	public static int countBracketReversals(String input) {
+		//Your code goes here_
+		char[] ch= input.toCharArray();
+		Stack<Character> s= new Stack<>();
+		for(char c1:ch){
+			if(!s.empty() && s.peek()=='{' && c1=='}'){
+				s.pop();
+			}
+			else{
+				s.push(c1);
+			}
+
+		}
+		int count =0;
+		
+			while(s.size()>=2)
+			{
+
+				char c = s.pop();
+			 if( s.peek()=='{' && c=='}'){
+				s.pop(); // no need to change 
+			}
+		else if( s.peek()=='{' && c=='{'){
+				count++; // changing c to }
+				s.pop();
+			}
+			else if( s.peek()=='}' && c=='}'){
+				count++; //changing s.peek to{
+					s.pop();
+			}
+			else if( s.peek()=='}' && c=='{'){
+				count +=2; // changing s.peek() to { and c to }
+				s.pop();
+			}
+			
+	}
+
+	if(s.empty()){
+		return count;
+	}
+	return -1;
+}
+}
