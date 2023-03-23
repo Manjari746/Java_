@@ -5,6 +5,7 @@ public class Solution{
 
         ///////////////////BETTER APPROACH /////////////////////
         int n=nums.length;
+	// in Bitwise xor - same bits retrun 0 and diff return 1
         int unike=0;
         for(int i=0;i<n;i++){
         unike^=nums[i];
