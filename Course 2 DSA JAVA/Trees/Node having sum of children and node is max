@@ -1,0 +1,102 @@
+import java.util.*;
+public class Solution {
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+    public static int sum(TreeNode<Integer> root){
+       int sum=root.data;
+        for(int i=0;i<root.children.size();i++)
+            sum+=root.children.get(i).data;
+    
+    return sum;
+    }
+	
+	public static TreeNode<Integer> maxSumNode(TreeNode<Integer> root){
+	     
+    TreeNode<Integer> result = root; 
+    int maxSum = sum(root);
+    
+    for(int i=0; i<root.children.size(); i++) {
+        TreeNode<Integer> temp = maxSumNode(root.children.get(i));
+        
+        if(sum(temp)> maxSum){
+            maxSum = sum(temp);
+            result = temp;
+        }
+    }
+    return result;
+        
+	}   
+}
+
+//////////////////////////////////////////////////////////////////// Alternate 
+class Pair{
+    int maxsum;
+    TreeNode<Integer>maxnode;
+
+    Pair(int sum , TreeNode<Integer> ans){
+        maxsum=sum;
+        maxnode=ans;
+    }
+}
+public class Solution {
+
+/*  TreeNode structure 
+ * 
+ * class TreeNode<T> {
+        T data;
+        ArrayList<TreeNode<T>> children;
+
+        TreeNode(T data){
+            this.data = data;
+            children = new ArrayList<TreeNode<T>>();
+        }
+    }*/
+
+
+
+    public static TreeNode<Integer> maxSumNode(TreeNode<Integer> root){
+
+            Pair ans =helper(root);
+            return ans.maxnode;
+
+
+
+    }
+
+    public static  Pair helper(TreeNode<Integer> root ){
+
+        if(root == null){
+            return new Pair(Integer.MIN_VALUE, null );
+        }
+
+            int sum = root.data;
+            for(int i=0;i<root.children.size();i++){
+                sum+=root.children.get(i).data;
+            }
+
+            Pair ans2= new Pair(sum ,root );
+
+            for(int i=0;i<root.children.size();i++){
+            Pair ans1= helper(root.children.get(i)); 
+
+
+            if(ans2.maxsum< ans1.maxsum ){ 
+                ans2.maxsum= ans1.maxsum;
+                ans2.maxnode = ans1.maxnode;
+             }
+
+
+        }
+
+        return ans2;
+
+    }
+}
